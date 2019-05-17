@@ -16,11 +16,89 @@ Hint:
 Try drawing the function out first if the arrays are a little confusing.
 */
 
+
+
+function multiplyMatrices(matrix1, matrix2) {
+
+// I only made it work if matrix1 = []. If matrix2 = [] it will probably throw an error
+if (matrix1[0] === undefined) {
+	return null
+} else {
+
+	// Don't touch these well named variables
+	let elementProduct = [],
+	rowSum = [],
+	dotProduct = [],
+	counter = 0,
+	firtMatrixRows = 0,
+	secondMatrixColumns = 0,
+	numOfRows = matrix2.length,
+	numOfColumns = matrix1[0].length;
+
+
+	// Gets the length of the second matrices' columns - used to set number of loops
+	matrix2.forEach(x => {
+		secondMatrixColumns = x.length
+	})
+
+
+	// The number of columns in the first matrix has to equal the number of rows in the second
+	// Else dot product is impossible and the code will not run
+	if (numOfColumns == numOfRows) {
+
+		// Code will loop through each row of the first matrix
+		while (firtMatrixRows < matrix1.length) {
+
+			// Code will loop through each column of the second matrix
+			while (counter < secondMatrixColumns) {
+
+				// currentColumn gets reset at the start of the loop so it can be reused
+				let currentColumn = [];
+
+					// currentColumn now represents a column of the second matrix
+					matrix2.forEach(x => {
+						x.forEach(function (a,b) {
+							if (b === counter) {
+								currentColumn.push(a)
+						}})
+					})
+
+					// Iterate through the current first matrix row
+            		// Multiply each element with the element of currentColumn, push into the elementProduct array
+					matrix1[firtMatrixRows].forEach(function (x,y) {
+						currentColumn.forEach(function (a,b) {
+							if (y === b) {
+								elementProduct.push(x * a)
+							}
+						})
+					})
+
+					// Sum whats in elementProduct and pass it into rowSum. Reset elementProduct.
+					rowSum.push(elementProduct.reduce((a, b) => a + b, 0))
+					elementProduct = []
+				
+					// Add one to the counter to loop through the next column in the second matrix
+            		// Loop will end after the last column - reference line 53
+					counter += 1
+			}
+
+			// Now loop through the next row in the first matrix and repeat
+        	// Loop will end after the last column - reference line 50
+			counter = 0
+			dotProduct.push(rowSum)
+			rowSum = []
+			firtMatrixRows += 1
+		}
+
+		// return the dot product of the two matrices'
+		return dotProduct
+	} 
+}}
+
+
 // Returns result of matrix multiplication, or null
 // if the matrices cannot be multiplied
-function multiplyMatrices(matrixOne, matrixTwo) {
-	// your code here
-}
+
 
 const assert = require("assert")
 
