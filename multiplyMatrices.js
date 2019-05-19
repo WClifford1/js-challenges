@@ -20,7 +20,9 @@ Try drawing the function out first if the arrays are a little confusing.
 
 function multiplyMatrices(matrix1, matrix2) {
 
-// I only made it work if matrix1 = []. If matrix2 = [] it will probably throw an error
+// I only made it return null if matrix1 = [] to satisfy the test.
+// Only input matrices where the number of elements in the first matrix equals the number of columns in the second
+// to get a proper result
 	if (matrix1[0] === undefined) {
 		return null
 	} else {
