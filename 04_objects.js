@@ -86,7 +86,7 @@ const formatAddress = (email) => {
   // return(shop.customers.'jane@doe.com'.address.(streetNumber, street, city, postcode))
   // Given a user's email, return their address in the format:
   // streetNumber street, city, postcode
-  // E.g. 10 Amelia St, Sydney, 2000
+  // E.g. 10 Amelia St, Sydney, 2000 // 
   // Hint: some destructuring might save you a few lines.
   let v = shop.customers[email].address
   return `${v.streetNumber} ${v.street}, ${v.city}, ${v.postcode}`
