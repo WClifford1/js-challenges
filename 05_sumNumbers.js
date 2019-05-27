@@ -12,8 +12,20 @@
 
 
 function findWinner(players) {
-    // Your code here
-    
+    // Create variables for each players total score
+    let sum0 = players[0].scores.reduce((a,b) => a+b, 0)
+    console.log(sum0)
+    let sum1 = players[1].scores.reduce((a,b) => a+b, 0)
+    console.log(sum1)
+
+    // Return which player has the higher score
+    if (sum0 > sum1) {
+        return players[0].name
+    } else if (sum1 > sum0) {
+        return players[1].name
+    } else {
+        return players[0].name
+    }
 }
 
 
@@ -26,6 +38,7 @@ class Player {
     }
 }
 
+
 let players = []
 describe('findWinner', function () {
     it('Should return the winner when winner is first in array', function () {
@@ -34,7 +47,7 @@ describe('findWinner', function () {
     })
     it('Should return the winner when winner is second in array', function () {
         players = [new Player('Nathan', [55, 90, 86]), new Player('James', [200, 100, 85])]
-        assert.equal('Nathan', findWinner(players))
+        assert.equal('James', findWinner(players))
     })
     it('Should return the first player when both players are tied', function () {
         players = [new Player('Nathan', [50, 100, 85]), new Player('James', [50, 100, 85])]
