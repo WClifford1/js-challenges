@@ -72,8 +72,6 @@ const productById = (productId) => {
   for (product of shop.products) {
     if (product.id === productId) {
       return product
-  } else {
-    return false
   }
 }}
 
@@ -92,10 +90,7 @@ const formatAddress = (email) => {
   return `${v.streetNumber} ${v.street}, ${v.city}, ${v.postcode}`
 }
 
-const totalCost = (email, orderId) => {
-  // Return the total cost of an order.
-  return shop.customers[email].orders[orderId]
-}
+
 
 const addProduct = (id, title, price) => {
   // Add a product to the shop.
@@ -146,11 +141,6 @@ describe("formatAddress", () => {
   });
 });
 
-describe("totalCost", () => {
-  it("Should return the total cost of a customer's order", () => {
-    assert.equal(totalCost('jane@doe.com', 61721), 25.41);
-  });
-});
 
 describe("addProduct", () => {
   it("Should add a product", () => {
