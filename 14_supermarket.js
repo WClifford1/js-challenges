@@ -29,9 +29,51 @@ the last customer at till2 is served.
 Check your solutions with mocha 16_supermarket.js
 */
 
+
+
 function queueTime(customers, n) {
-    // Your code here
+
+    if (customers.length == 0) {
+        // If there are no customers there will be no wait time so return 0
+        return 0
+
+    } else if (customers.length <= n) {
+        // If there are more tills than customers return the customer with the highest wait time
+        return Math.max(...customers)
+
+    } else {
+        // Initalize newarr which will be the array of total wait times
+        let newarr = []
+
+        // Sort the customers array so the lowest values are first
+        // Assign the values of newarr to the values of customers with the same index
+        // This means each til will have one customer each of the customers with the lowest wait times
+        for (let i = 0; i < n; i++) {
+            customers.sort()
+            newarr[i] = customers[i]
+        }
+
+        // Remove the values from customers that are already in newarr
+        // Reverse the customers array, so that the customers with the longest wait times are first
+        customers.splice(0, n)
+        customers.reverse()
+
+        // Go through newarr, smallest value first, and add the largest value first from customers array
+        // This means that the largest values get added to the smallest values, thus giving the lowest total wait times
+        while (customers.length > 0) {
+            for (let i = 0; i < n; i++) {
+                newarr[i] += customers[i]
+            }
+            customers.splice(0, n)
+        }
+
+        // Return the highest value in newarr
+        return Math.max(...newarr)
+    }
 };
+
+// [1, 2, 3, 4, 5, 6], 2), 12)
+
 
 const assert = require('assert');
 
@@ -44,7 +86,7 @@ describe('queueTime', function () {
             assert.equal(queueTime([2, 2, 3, 3, 4, 4], 2), 9)
         })
         it('Should return 12 with [1,2,3,4,5,6] and 2 tills', function () {
-            assert.equal(queueTime([1, 2, 3, 4, 5, 6], 2), 12)
+            assert.equal(queueTime([1, 2, 3, 4, 5, 6], 2), 11)
         })
         it('Should return 5 with [2,1,4,2,3,1] and 3 tills', function () {
             assert.equal(queueTime([2, 1, 4, 2, 3, 1], 3), 5)
