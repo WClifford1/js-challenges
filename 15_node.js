@@ -17,7 +17,6 @@
   Hints:
   - You'll need to set the Content-Type so the
     browser knowns you're sending it HTML.
-
 */
 
 const http = require('http')

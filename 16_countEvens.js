@@ -17,7 +17,32 @@ Google - mocha tests to get an idea.
 */
 
 const countEvens = (arr) => {
-// Your code here
+    let sum = 0
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) {
+            sum += 1
+        }
+    }
+    return sum
 }
-  
+
 // Your tests here
+var assert = require('assert');
+
+describe('countEvens', function () {
+    it('Should return the correct amount of even numbers', function () {
+        assert.equal(countEvens([2, 2, 2]), 3)
+        assert.equal(countEvens([0, 1, 3]), 1)
+        assert.equal(countEvens([1023, 1, 2, 90066]), 2)
+    });
+    it('Should return zero when only odd numbers numbers', function () {
+        assert.equal(countEvens([3, 1, 5]), 0)
+        assert.equal(countEvens([7, 13303, 3]), 0)
+        assert.equal(countEvens([1023, 1, -33, -21]), 0)
+    });
+    it('Should return the correct amount of even numbers including zero and negative numbers', function () {
+        assert.equal(countEvens([0, 0, 5]), 2)
+        assert.equal(countEvens([-2, 1, 3]), 1)
+        assert.equal(countEvens([1023, 1, 2, -2]), 2)
+    });
+});
