@@ -9,29 +9,61 @@
 //     If a dead cell has exactly 3 neighbours, it comes to life.
 // Good luck and have fun!
 
+// 				[0, 0, 0, 0, 0],
+// 				[0, 0, 1, 1, 0],
+// 				[0, 1, 1, 0, 0],
+// 				[0, 0, 1, 0, 1],
+// 				[0, 0, 1, 0, 0]
+// 			]
+// 			assert.deepEqual(conwaysGameOfLife(game), [
+// 				[0, 0, 0, 0, 0],
+// 				[0, 1, 1, 1, 0],
+// 				[0, 1, 0, 0, 0],
+// 				[0, 0, 1, 0, 0],
+// 				[0, 0, 0, 1, 0]
+
+
+let game = [
+	[0, 0, 0, 0, 0],
+	[0, 0, 1, 1, 0],
+	[0, 1, 1, 0, 0],
+	[0, 0, 1, 0, 1],
+	[0, 0, 1, 0, 0]
+]
+
+for (let i = 0; i < game.length; i++) {
+	for (let x = 0; x < game[i].length; x++) {
+		if (i === 0 && ) {
+			// If a dead cell has exactly 3 neighbours, it comes to life.
+
+		}
+	}
+}
+
+
 function conwaysGameOfLife(game) {
 	// Your code goes here
 }
 
 let assert = require("assert")
 
-describe("Conway's Game Of Life", function() {
-	context("Testing One Generation", function() {
-		it("Should correctly return the next generation of the game", function() {
-			let game = [
-				[0, 0, 0, 0, 0],
-				[0, 0, 1, 1, 0],
-				[0, 1, 1, 0, 0],
-				[0, 0, 1, 0, 1],
-				[0, 0, 1, 0, 0]
-			]
-			assert.deepEqual(conwaysGameOfLife(game), [
-				[0, 0, 0, 0, 0],
-				[0, 1, 1, 1, 0],
-				[0, 1, 0, 0, 0],
-				[0, 0, 1, 0, 0],
-				[0, 0, 0, 1, 0]
-			])
-		})
-	})
-})
+// describe("Conway's Game Of Life", function() {
+// 	context("Testing One Generation", function() {
+// 		it("Should correctly return the next generation of the game", function() {
+// 			let game = [
+// 				[0, 0, 0, 0, 0],
+// 				[0, 0, 1, 1, 0],
+// 				[0, 1, 1, 0, 0],
+// 				[0, 0, 1, 0, 1],
+// 				[0, 0, 1, 0, 0]
+// 			]
+// 			assert.deepEqual(conwaysGameOfLife(game), [
+// 				[0, 0, 0, 0, 0],
+// 				[0, 1, 1, 1, 0],
+// 				[0, 1, 0, 0, 0],
+// 				[0, 0, 1, 0, 0],
+// 				[0, 0, 0, 1, 0]
+// 			])
+// 		})
+// 	})
+// })

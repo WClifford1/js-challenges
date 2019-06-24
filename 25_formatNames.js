@@ -4,33 +4,47 @@
 // Expected output is a string with a comma-separated list of names in the format (LAST, FIRST), in alphabetical order by last name.
 
 // Example input:
-/*
-  [
-    {
-      first: "Joe",
-      last: "Miller"
-    },
-    {
-      first: "John",
-      last: "Miller"
-    },
-    {
-      first: "Sara",
-      last: "Jones"
-    },
-    {
-      first: "Sara",
-      last: "Abel"
-    }
-  ]
-  
-  Expected output:
-  "(ABEL, SARA), (JONES, SARA), (MILLER, JOE), (MILLER, JOHN)"  
-*/
+
+// let names = [{
+// 		first: "Joe",
+// 		last: "Miller"
+// 	},
+// 	{
+// 		first: "John",
+// 		last: "Miller"
+// 	},
+// 	{
+// 		first: "Sara",
+// 		last: "Jones"
+// 	},
+// 	{
+// 		first: "Sara",
+// 		last: "Abel"
+// 	}
+// ]
+
+
+
+//   Expected output:
+//   "(ABEL, SARA), (JONES, SARA), (MILLER, JOE), (MILLER, JOHN)"  
+
 
 function formatNames(names) {
-	// Your code goes here
+
+	let newarr = []
+
+	for(let i = 0; i < names.length; i++) {
+		newarr.push(`(${names[i].last.toUpperCase()}, ${names[i].first.toUpperCase()})`)
+	}
+
+	return newarr.sort().join(', ')
+	
 }
+
+
+
+
+
 
 let assert = require("assert")
 
@@ -43,8 +57,7 @@ describe("formatNames", () => {
 	context("with input", () => {
 		it("should return (ABEL, SARA), (JONES, SARA), (MILLER, JOE), (MILLER, JOHN) with input specified", () => {
 			assert.equal(
-				formatNames([
-					{
+				formatNames([{
 						first: "Joe",
 						last: "Miller"
 					},

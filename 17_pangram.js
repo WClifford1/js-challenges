@@ -23,6 +23,7 @@ function isPangram(string) {
         for (let x = 0; x < string2.length; x++) {
                 if (abet[i] === string2[x]) {
                     sum += 1
+                    delete string2[x]
                     break
                 }
             }
